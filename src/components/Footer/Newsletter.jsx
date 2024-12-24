@@ -5,7 +5,7 @@ export default function Newsletter() {
     <div className="max-w-md">
       <h3 className="text-lg font-semibold mb-2">Get our weekly newsletter</h3>
       <p className="text-gray-600 text-sm mb-4">
-        Stay updated with the latest news and articles from Buletin
+        Stay updated with the latest news and articles from Dripnews
       </p>
       <form className="flex gap-2" onSubmit={(e) => e.preventDefault()}>
         <input

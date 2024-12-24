@@ -6,7 +6,7 @@ export default function Header() {
     <header className="border-b">
       <div className="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
         <div className="flex items-center space-x-12">
-          <h1 className="text-2xl font-bold text-red-500">Buletin</h1>
+          <h1 className="text-2xl font-bold text-red-500">Dripnews</h1>
           <nav>
             <ul className="flex space-x-8">
               <li><a href="#" className="text-gray-600 hover:text-gray-900">Stories</a></li>

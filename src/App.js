@@ -6,7 +6,6 @@ import Category from './pages/Category';
 import Author from './pages/Author';
 import Source from './pages/Source';
 import Settings from './pages/Settings';
-import StoriesPage from './pages/StoriesPage';
 import Preloader from "./components/Preloader/Preloader";
 import { usePreloader } from "./hooks/usePreloader";
 import { ToastContainer } from 'react-toastify';
@@ -31,7 +30,6 @@ function App() {
           {/* <Route path="/settings" element={<ProtectedRoutes><Settings /></ProtectedRoutes>} /> */}
           <Route path="/settings" element={<Settings />} />
           {/* <Route path="/stories" element={<ProtectedRoutes><StoriesPage /></ProtectedRoutes>} /> */}
-          <Route path="/stories" element={<StoriesPage />} />
           <Route path="/category/:categoryName" element={<Category />} />
           <Route path="/author/:authorName" element={<Author />} />
           <Route path="/source/:sourceName" element={<Source />} />
