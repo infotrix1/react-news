@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { Search, Bell, Settings, Menu, X } from 'lucide-react';
+import { Link } from 'react-router-dom'; 
 import NavLinks from './NavLinks';
+import SearchOverlay from '../Search/SearchOverlay';
 
 export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -16,7 +18,9 @@ export default function Header() {
     <header className="border-b">
       <div className="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
         <div className="flex items-center">
-          <h1 className="text-2xl font-bold text-red-500">Buletin</h1>
+          <Link to="/" className="text-2xl font-bold text-red-500">
+            Dripnews
+          </Link>          
           <nav className="hidden lg:block ml-12">
             <NavLinks className="flex space-x-8" />
           </nav>
@@ -30,8 +34,9 @@ export default function Header() {
             >
               <Search className="w-5 h-5" />
             </button>
-            <Bell className="w-5 h-5 text-gray-500 cursor-pointer" />
-            <Settings className="w-5 h-5 text-gray-500 cursor-pointer" />
+            <Link to="/settings" className="text-gray-500 hover:text-gray-900">
+              <Settings className="w-5 h-5 cursor-pointer" />
+            </Link>        
           </div>
           <button 
             onClick={() => setIsMobileMenuOpen(true)}
@@ -42,22 +47,13 @@ export default function Header() {
         </div>
       </div>
 
-      {isSearchOpen && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex justify-center items-center">
-          <div className="bg-white p-4 rounded-lg shadow-lg w-96">
-            <input
-              type="text"
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder="Search..."
-              className="w-full p-2 border rounded"
-            />
-            <button onClick={() => setIsSearchOpen(false)} className="absolute top-2 right-2 text-gray-500">
-              <X className="w-5 h-5" />
-            </button>
-          </div>
-        </div>
-      )}
+      {/* Using SearchOverlay instead of custom search modal */}
+      <SearchOverlay
+        isOpen={isSearchOpen}
+        onClose={() => setIsSearchOpen(false)}
+        searchQuery={searchQuery}
+        onSearchChange={setSearchQuery}
+      />
 
       {isMobileMenuOpen && (
         <div className="fixed inset-0 z-50 bg-white lg:hidden">

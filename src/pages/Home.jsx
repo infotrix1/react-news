@@ -1,6 +1,7 @@
 import Header from '../components/Header/Header';
 import Hero from '../components/Hero';
 import FeaturedArticle from '../components/FeaturedArticle';
+import FeaturedSlider from '../components/Featured/FeaturedSlider';
 import NewsGrid from '../components/NewsGrid';
 import Footer from '../components/Footer/Footer';
 import Preloader from "../components/Preloader/Preloader";

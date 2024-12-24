@@ -2,20 +2,13 @@ import React, { useEffect, useRef } from 'react';
 import { X, Search as SearchIcon } from 'lucide-react';
 import SearchResults from './SearchResults';
 
-interface SearchOverlayProps {
-  isOpen: boolean;
-  onClose: () => void;
-  searchQuery: string;
-  onSearchChange: (value: string) => void;
-}
-
 export default function SearchOverlay({ 
   isOpen, 
   onClose, 
   searchQuery, 
   onSearchChange 
-}: SearchOverlayProps) {
-  const inputRef = useRef<HTMLInputElement>(null);
+}) {
+  const inputRef = useRef(null);
 
   useEffect(() => {
     if (isOpen) {
