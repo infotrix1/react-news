@@ -1,24 +1,23 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { ChevronDown } from 'lucide-react';
 import { api } from '../../constants';
-import { Link } from 'react-router-dom'; // Import Link for navigation
+import { Link } from 'react-router-dom'; 
 
 export default function NavLinks({ className = "" }) {
   const [isCategoryOpen, setIsCategoryOpen] = useState(false);
-  const [isAuthorOpen, setIsAuthorOpen] = useState(false); // State for author dropdown
-  const [isSourceOpen, setIsSourceOpen] = useState(false); // State for sources dropdown
+  const [isAuthorOpen, setIsAuthorOpen] = useState(false); 
+  const [isSourceOpen, setIsSourceOpen] = useState(false); 
   const [categoryMenuItems, setCategoryMenuItems] = useState([]);
-  const [authorMenuItems, setAuthorMenuItems] = useState([]); // State for authors
-  const [sourceMenuItems, setSourceMenuItems] = useState([ // State for sources
+  const [authorMenuItems, setAuthorMenuItems] = useState([]); 
+  const [sourceMenuItems, setSourceMenuItems] = useState([ 
     { name: 'News Api' },
     { name: 'New York Times' },
     { name: 'The Guardian' },
   ]);
-  const categoryDropdownRef = useRef(null); // Ref for category dropdown
-  const authorDropdownRef = useRef(null); // Ref for author dropdown
-  const sourceDropdownRef = useRef(null); // Ref for source dropdown
+  const categoryDropdownRef = useRef(null); 
+  const authorDropdownRef = useRef(null); 
+  const sourceDropdownRef = useRef(null); 
 
-  // Fetch category data from API
   useEffect(() => {
     async function fetchCategoryData() {
       try {
@@ -32,12 +31,11 @@ export default function NavLinks({ className = "" }) {
     fetchCategoryData();
   }, []);
 
-  // Fetch author data from API
   useEffect(() => {
     async function fetchAuthorData() {
       try {
         const response = await api.get('/authors');
-        setAuthorMenuItems(response.data); // Set authors data
+        setAuthorMenuItems(response.data);
       } catch (error) {
         console.error('Error fetching author data:', error);
       }
@@ -46,7 +44,6 @@ export default function NavLinks({ className = "" }) {
     fetchAuthorData();
   }, []);
 
-  // Handle clicks outside dropdowns to close them
   useEffect(() => {
     function handleClickOutside(event) {
       if (
@@ -55,8 +52,8 @@ export default function NavLinks({ className = "" }) {
         (sourceDropdownRef.current && !sourceDropdownRef.current.contains(event.target))
       ) {
         setIsCategoryOpen(false);
-        setIsAuthorOpen(false); // Close both dropdowns when clicked outside
-        setIsSourceOpen(false); // Close the source dropdown
+        setIsAuthorOpen(false); 
+        setIsSourceOpen(false); 
       }
     }
 
@@ -86,8 +83,8 @@ export default function NavLinks({ className = "" }) {
                 {categoryMenuItems.map((item, index) => (
                   item.category && (
                     <Link
-                      key={item.category} // Use category as the key
-                      to={`/category/${item.category}`} // Redirect to the category page with category
+                      key={item.category} 
+                      to={`/category/${item.category}`} 
                       className={`flex items-start p-5 hover:bg-gray-50 transition-colors ${index !== categoryMenuItems.length - 1 ? 'border-b border-gray-100' : ''}`}
                     >
                       <div className="ml-3">
@@ -123,7 +120,7 @@ export default function NavLinks({ className = "" }) {
                 {authorMenuItems.map((item, index) => (
                   item.author && (
                     <Link
-                      key={item.author} // Use author as the key
+                      key={item.author} 
                       to={`/author/${item.author}`} // Redirect to the author page with author
                       className={`flex items-start p-5 hover:bg-gray-50 transition-colors ${index !== authorMenuItems.length - 1 ? 'border-b border-gray-100' : ''}`}
                     >
@@ -160,7 +157,7 @@ export default function NavLinks({ className = "" }) {
                 {sourceMenuItems.map((item, index) => (
                   item.name && (
                     <Link
-                      key={item.name} // Use source name as the key
+                      key={item.name} 
                       to={`/source/${item.name.toLowerCase().replace(/\s+/g, ' ')}`} // Redirect to the source page with source name
                       className={`flex items-start p-5 hover:bg-gray-50 transition-colors ${index !== sourceMenuItems.length - 1 ? 'border-b border-gray-100' : ''}`}
                     >
@@ -181,7 +178,7 @@ export default function NavLinks({ className = "" }) {
   return (
     <ul className={className}>
       {links.map((link, index) => (
-        <li key={link.label ? link.label.toLowerCase() : index}> {/* Ensure label is defined */}
+        <li key={link.label ? link.label.toLowerCase() : index}>
           {link.component ? (
             <link.component />
           ) : (

@@ -5,20 +5,16 @@ import Preloader from "../components/Preloader/Preloader";
 import { usePreloader } from "../hooks/usePreloader";
 
 export default function NewsGrid() {
-  // State to hold the fetched news data
   const [newsItems, setNewsItems] = useState([]);
   const [error, setError] = useState(null);
 
-  // Using the usePreloader hook
   const isLoading = usePreloader();
 
   useEffect(() => {
     const fetchNews = async () => {
       try {
-        // Fetch data from the API
         const response = await api.get('/fetch-news');
         
-        // Assuming response.data contains the news items
         setNewsItems(response.data);
       } catch (err) {
         setError('Failed to fetch news');
@@ -27,14 +23,12 @@ export default function NewsGrid() {
     };
 
     fetchNews();
-  }, []); // Empty dependency array to fetch on mount
+  }, []); 
 
-  // If the page is loading, show the preloader
   if (isLoading) {
     return <Preloader />;
   }
 
-  // If there's an error, display the error message
   if (error) {
     return <div>{error}</div>;
   }

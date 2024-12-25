@@ -1,7 +1,5 @@
 import React from 'react';
-import FooterLinks from './FooterLinks';
-import Newsletter from './Newsletter';
-import SocialLinks from './SocialLinks';
+import { Twitter, Facebook, Instagram, Youtube } from 'lucide-react';
 
 const footerSections = [
   {
@@ -47,13 +45,55 @@ export default function Footer() {
     <footer className="bg-gray-50 border-t">
       <div className="max-w-7xl mx-auto px-4 py-12">
         <div className="grid md:grid-cols-2 gap-12 mb-8">
-          <Newsletter />
+          <div className="bg-white p-6 rounded-lg shadow-md">
+            <h3 className="text-lg font-semibold text-gray-900 mb-3">Subscribe to our Newsletter</h3>
+            <input
+              type="email"
+              placeholder="Enter your email"
+              className="w-full p-2 border border-gray-300 rounded-md"
+            />
+            <button className="mt-4 w-full py-2 bg-blue-600 text-white rounded-md">Subscribe</button>
+          </div>
           <div className="md:ml-auto">
-            <SocialLinks />
+            <div className="flex space-x-4">
+              {[
+                { Icon: Twitter, href: '#', label: 'Twitter' },
+                { Icon: Facebook, href: '#', label: 'Facebook' },
+                { Icon: Instagram, href: '#', label: 'Instagram' },
+                { Icon: Youtube, href: '#', label: 'YouTube' },
+              ].map(({ Icon, href, label }) => (
+                <a
+                  key={label}
+                  href={href}
+                  className="text-gray-600 hover:text-gray-900"
+                  aria-label={label}
+                >
+                  <Icon className="w-5 h-5" />
+                </a>
+              ))}
+            </div>
           </div>
         </div>
         
-        <FooterLinks sections={footerSections} />
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+          {footerSections.map((section) => (
+            <div key={section.title}>
+              <h3 className="font-semibold text-gray-900 mb-3">{section.title}</h3>
+              <ul className="space-y-2">
+                {section.links.map((link) => (
+                  <li key={link.label}>
+                    <a
+                      href={link.href}
+                      className="text-gray-600 hover:text-gray-900 text-sm"
+                    >
+                      {link.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
         
         <div className="mt-12 pt-8 border-t border-gray-200">
           <div className="flex flex-col md:flex-row justify-between items-center">

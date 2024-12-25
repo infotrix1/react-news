@@ -11,14 +11,13 @@ export default function LoginPage() {
   const [error, setError] = useState(null);
   const navigate = useNavigate();
 
-  // Mark handleSubmit as async
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       const response = await api.post('/login', { email, password });
       localStorage.setItem('token', response.data.token);
       toast.success('Login successfully!'); 
-      navigate('/');
+      window.location = '/'  
     } catch (error) {
       toast.error(error.response.data.error); 
     }

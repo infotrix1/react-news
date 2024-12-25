@@ -19,24 +19,22 @@ function App() {
     return <Preloader />;
   }
   return (
-    <Router>
+   <Router>
       <div>
         <ToastContainer />
         <Routes>
-          <Route element={<ProtectedRoutes />}>
-          </Route>
-          {/* <Route path="/" element={<ProtectedRoutes><HomePage /></ProtectedRoutes>} /> */}
-          <Route path="/" element={<HomePage />} />
-          {/* <Route path="/settings" element={<ProtectedRoutes><Settings /></ProtectedRoutes>} /> */}
-          <Route path="/settings" element={<Settings />} />
-          {/* <Route path="/stories" element={<ProtectedRoutes><StoriesPage /></ProtectedRoutes>} /> */}
-          <Route path="/category/:categoryName" element={<Category />} />
-          <Route path="/author/:authorName" element={<Author />} />
-          <Route path="/source/:sourceName" element={<Source />} />
-
-
+          {/* Public routes */}
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />
+
+          {/* Protected routes */}
+          <Route element={<ProtectedRoutes />}>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/settings" element={<Settings />} />
+            <Route path="/category/:categoryName" element={<Category />} />
+            <Route path="/author/:authorName" element={<Author />} />
+            <Route path="/source/:sourceName" element={<Source />} />
+          </Route>
         </Routes>
       </div>
     </Router>
