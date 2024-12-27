@@ -1,70 +1,78 @@
-# Getting Started with Create React App
+# News Application
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+The News Application is a web app that provides users with the latest news from various sources. It utilizes React for the front end and Docker to package the application for easy deployment. The app fetches news data from a API and displays articles, headlines, It features include news fetch, filtering by categories, source and authors.
 
-## Available Scripts
+## Features
+- Display the latest news headlines
+- Mobile-responsive layout
+- filtering of news.
+- search of latest news
+- Easy to deploy using Docker
 
-In the project directory, you can run:
+## Technologies Used
+- **React** - A JavaScript library for building user interfaces.
+- **Axios** - Promise-based HTTP client for making requests to the news API.
+- **Tailwind** - Styling for the front-end.
+- **Docker** - Containerization platform for easy deployment.
 
-### `npm start`
+## Getting Started
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Prerequisites
+To run this application locally or in Docker, ensure that you have the following installed:
+- **Node.js**: Version 16 or higher
+- **npm** (Node Package Manager) or **yarn**: For managing dependencies
+- **Docker**: For containerizing the app
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+You can install **Node.js** and **npm** from [nodejs.org](https://nodejs.org/). For **Docker**, you can follow the installation guide on [docker.com](https://www.docker.com/get-started).
 
-### `npm test`
+### Running Locally
+To run the application on your local machine, follow these steps:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1. Clone the repository to your local machine:
 
-### `npm run build`
+   ```bash
+   git clone https://github.com/infotrix1/react-news.git
+   cd react-news
+   ```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+2. Install the necessary dependencies:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+   ```bash
+   npm install
+   ```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+   or if you're using yarn:
 
-### `npm run eject`
+   ```bash
+   yarn install
+   ```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+3. Start the development server:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+   ```bash
+   npm start
+   ```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+   This will run the application on `http://localhost:3000`.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### Running with Docker
+To run the application using Docker, follow these steps:
 
-## Learn More
+1. Build the Docker image:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+   ```bash
+   docker compose up --build  .
+   ```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+2. Run the Docker container:
 
-### Code Splitting
+   ```bash
+   docker run -p 8080:8080 react-news
+   ```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+   This will start the application and map it to `http://localhost:8080` on your machine.
 
-### Analyzing the Bundle Size
+## License
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+---
